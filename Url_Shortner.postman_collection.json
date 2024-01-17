@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "7a73cb68-5e89-4561-8e49-c0baeded353b",
+		"name": "Url_Shortner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27917387"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/login?email=user1@email.com&password=12345678",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "user1@email.com"
+						},
+						{
+							"key": "password",
+							"value": "12345678"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "urlshortener",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "3|1O1U6jYhjo7eBpGPemBHS3Ipb9MmYIJWFvUJ6ai25ce5c6be"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/urls?original_url=https://www.aljazeera.com/program/newsfeed/2024/1/16/israels-war-on-gaza-is-the-deadliest-for-journalists",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"urls"
+					],
+					"query": [
+						{
+							"key": "original_url",
+							"value": "https://www.aljazeera.com/program/newsfeed/2024/1/16/israels-war-on-gaza-is-the-deadliest-for-journalists"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
