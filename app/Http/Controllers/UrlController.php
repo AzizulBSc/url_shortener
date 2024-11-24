@@ -104,4 +104,6 @@ class UrlController extends Controller
         $url = Url::create($data);
         return response()->json($url);
     }
+    public function test(){
+        return 'test:';
 }
