@@ -1,0 +1,51 @@
+version: '3.8'
+services:
+  app:
+    container_name: urlapp
+    restart: unless-stopped
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - myapp-network
+
+  mysql:
+    image: mysql:latest
+    container_name: urlapp-mysql
+    restart: unless-stopped
+    environment:
+       MYSQL_ROOT_PASSWORD: root
+       MYSQL_DATABASE: myapp
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - myapp-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: urlapp-nginx
+    restart: unless-stopped
+    ports:
+      - 80:80
+      # - 443:443 for ssl
+    volumes:
+      - ./:/var/www/html
+      - ./.docker/nginx:/etc/nginx/conf.d/
+      # - ./.docker/ssl:/etc/nginx/ssl
+    depends_on:
+      - app
+    networks:
+      - myapp-network
+
+volumes:
+  mysql_data:
+
+networks:
+  myapp-network:
+    driver: bridge
