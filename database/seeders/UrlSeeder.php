@@ -52,6 +52,12 @@ class UrlSeeder extends Seeder
                 'short_url' => Str::random(5),
                 'created_at' => now(),
             ],
+            [
+                'user_id' => 1,
+                'original_url' => 'https://www.youtube.com/watch?v=ENVBeAhNz1c&list=RD_WyBG_BRRnQ&index=13&ab_channel=SonyMusicIndia',
+                'short_url' => Str::random(5),
+                'created_at' => now(),
+            ],
         ]);
     }
 }
