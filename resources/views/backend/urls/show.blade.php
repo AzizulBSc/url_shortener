@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-header">
                 <a id="short_url" target="_blank" style="text-decoration: none;"
-                    href="{{ url('/') }}/{{ $url->short_url }}">{{ url('/') }}/{{ $url->short_url }}</a>
+                    href="{{ url('/') }}/{{ $url->short_url }}">Short Url: {{ url('/') }}/{{ $url->short_url }}</a>
                 <button class="btn btn-info btn-sm float-end" id="copyBtn" onclick="copyUrl()">Copy</button>
             </div>
             <div class="card-body">
@@ -29,15 +29,15 @@
 @section('js')
 <script>
     function copyUrl() {
-       var urlElement = document.getElementById('short_url');
-       var range = document.createRange();
-       range.selectNode(urlElement);
-       window.getSelection().removeAllRanges();
-       window.getSelection().addRange(range);
-       document.execCommand('copy');
-       window.getSelection().removeAllRanges();
-       alert('URL copied!');
-      }
+        var urlElement = document.getElementById('short_url');
+        var range = document.createRange();
+        range.selectNode(urlElement);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        alert('URL copied!');
+    }
 </script>
 @endsection
 @endsection

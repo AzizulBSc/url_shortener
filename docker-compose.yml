@@ -18,8 +18,10 @@ services:
     container_name: urlapp-mysql
     restart: unless-stopped
     environment:
-       MYSQL_ROOT_PASSWORD: root
-       MYSQL_DATABASE: myapp
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
     ports:
       - "3306:3306"
     volumes:
@@ -33,11 +35,11 @@ services:
     restart: unless-stopped
     ports:
       - 80:80
-      # - 443:443 for ssl
+      - 443:443
     volumes:
       - ./:/var/www/html
       - ./.docker/nginx:/etc/nginx/conf.d/
-      # - ./.docker/ssl:/etc/nginx/ssl
+      - ./.docker/nginx/ssl:/etc/nginx/ssl
     depends_on:
       - app
     networks:
